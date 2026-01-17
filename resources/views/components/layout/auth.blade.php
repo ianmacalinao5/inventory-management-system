@@ -12,7 +12,7 @@
 <body>
 	<main class="min-h-dvh grid grid-cols-1 md:grid-cols-2">
 
-		<section class="hidden md:flex flex-col items-center justify-center bg-blue-600 text-white px-8">
+		<section class="hidden md:flex flex-col items-center justify-center bg-sky-600 text-white px-8">
 			<div class="text-center space-y-4">
 				<x-heroicon-o-archive-box class="w-16 h-16 mx-auto" />
 				<h1 class="text-3xl font-bold tracking-wide">
