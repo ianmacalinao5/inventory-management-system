@@ -1,9 +1,17 @@
 <?php
 
+use App\Http\Controllers\auth\LoginController;
+use App\Http\Controllers\auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 
-Route::redirect('/', '/dashboard');
+Route::get('/', [LoginController::class, 'index'])->name('login');
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+
+
+Route::get('/registers', function () {
+	return view('auth.register');
+})->name('password.request');
 
 Route::get('/dashboard', function () {
 	return view('dashboard');
