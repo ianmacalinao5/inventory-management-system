@@ -19,6 +19,12 @@
 				Login
 			</h2>
 
+			@if (session('status'))
+				<p class="text-sm text-green-600 text-center p-3 bg-green-100 rounded">
+					{{ session('status') }}
+				</p>
+			@endif
+
 			@if (session('authError'))
 				<p class="text-sm text-red-600 text-center p-3 bg-red-100 rounded">
 					{{ session('authError') }}
