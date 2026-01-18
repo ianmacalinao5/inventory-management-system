@@ -5,8 +5,10 @@
 			A
 		</div>
 		<div x-show="sidebarOpen" class="flex-1 min-w-0 transition-all duration-300">
-			<p class="text-sm font-medium text-gray-900 truncate">Admin User</p>
-			<p class="text-xs text-gray-500 truncate">admin@company.com</p>
+			@if(auth()->check())
+				<p class="text-sm font-medium text-gray-900 truncate">{{ auth()->user()->name }}</p>
+				<p class="text-xs text-gray-500 truncate">{{ auth()->user()->email }}</p>
+			@endif
 		</div>
 		<button x-show="sidebarOpen" class="">
 			<form method="POST" action="{{ route('logout') }}">
