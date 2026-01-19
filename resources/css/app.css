@@ -6,6 +6,15 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    --font-sans:
+        system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
         "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
+.tippy-box[data-theme~="light-border"] {
+    @apply bg-sky-600 text-white shadow-lg;
 }

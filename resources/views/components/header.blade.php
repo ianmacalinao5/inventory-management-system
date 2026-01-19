@@ -19,8 +19,8 @@
 		<div class="flex items-center gap-4">
 			<!-- Search -->
 			<div class="relative hidden md:block">
-				<input type="search" placeholder="Search..."
-					class="w-64 rounded-lg border border-gray-300 bg-gray-50 py-2 pl-10 pr-4 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20" />
+				<input type="text" placeholder="Search..."
+					class="w-64 rounded-lg border border-gray-300 bg-gray-50 py-2 pl-10 pr-4 text-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/20" />
 				<x-heroicon-o-magnifying-glass class="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
 			</div>
 
@@ -31,8 +31,7 @@
 			</button>
 
 			<!-- Quick Actions -->
-			<button
-				class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition">
+			<button class="rounded-lg bg-sky-600 px-4 py-2 text-sm font-medium text-white hover:bg-sky-700 transition">
 				+ Add Product
 			</button>
 		</div>

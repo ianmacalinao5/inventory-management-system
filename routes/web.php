@@ -67,4 +67,5 @@ Route::middleware('auth')->group(function () {
 	Route::view('/categories', 'categories')->name('categories');
 	Route::view('/reports', 'reports')->name('reports');
 	Route::view('/settings', 'settings')->name('settings');
+	Route::view('/user-profile', 'user-profile.profile')->name('user-profile');
 });
