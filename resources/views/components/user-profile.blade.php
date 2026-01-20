@@ -1,7 +1,7 @@
 <div class="border-t border-gray-200 p-4">
 	<div class="flex items-center gap-3 justify-center">
 
-		<a href="{{ route('user-profile') }}"
+		<a href="{{ route('user.profile') }}"
 			class="flex items-center gap-3 rounded-lg p-2 hover:bg-gray-100 transition">
 
 			<div

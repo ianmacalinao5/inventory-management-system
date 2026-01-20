@@ -9,8 +9,7 @@
 
 			<!-- Page Title / Breadcrumbs -->
 			<div>
-				<h2 class="text-xl font-semibold text-gray-900">{{ $pageTitle ?? 'Dashboard' }}</h2>
-				<p class="text-sm text-gray-500">{{ $pageDescription ?? 'Welcome back!' }}</p>
+				<h2 class="text-xl font-semibold text-gray-900"> @yield('page-title', 'Dashboard')</h2>
 			</div>
 
 		</div>
@@ -20,7 +19,7 @@
 			<!-- Search -->
 			<div class="relative hidden md:block">
 				<input type="text" placeholder="Search..."
-					class="w-64 rounded-lg border border-gray-300 bg-gray-50 py-2 pl-10 pr-4 text-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/20" />
+					class="w-64 rounded-lg border border-gray-300 bg-gray-50 py-2 pl-10 pr-4 text-sm outline-none focus:ring-1 focus:ring-sky-600" />
 				<x-heroicon-o-magnifying-glass class="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
 			</div>
 
@@ -30,10 +29,6 @@
 				<span class="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-red-500 ring-2 ring-white"></span>
 			</button>
 
-			<!-- Quick Actions -->
-			<button class="rounded-lg bg-sky-600 px-4 py-2 text-sm font-medium text-white hover:bg-sky-700 transition">
-				+ Add Product
-			</button>
 		</div>
 	</div>
 </header>

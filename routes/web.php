@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\ProductController;
@@ -51,6 +52,8 @@ Route::middleware('auth')->group(function () {
 	Route::post('/logout', [LoginController::class, 'logout'])
 		->name('logout');
 
+	Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
 	// Dashboard
 	Route::view('/dashboard', 'dashboard')
 		->name('dashboard');
@@ -67,5 +70,5 @@ Route::middleware('auth')->group(function () {
 	Route::view('/categories', 'categories')->name('categories');
 	Route::view('/reports', 'reports')->name('reports');
 	Route::view('/settings', 'settings')->name('settings');
-	Route::view('/user-profile', 'user-profile.profile')->name('user-profile');
+	Route::view('/user-profile', 'user-profile.profile')->name('user.profile');
 });
