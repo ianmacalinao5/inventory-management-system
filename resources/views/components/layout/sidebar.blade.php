@@ -82,7 +82,7 @@
 		<div x-cloak :class="sidebarOpen ? 'pl-64' : 'pl-20'" class="flex flex-1 flex-col transition-all duration-300">
 			<x-header />
 
-			<main class="flex-1 overflow-y-auto p-6">
+			<main class="flex-1 overflow-y-auto p-8">
 				{{ $slot }}
 			</main>
 

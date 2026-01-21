@@ -52,7 +52,10 @@ Route::middleware('auth')->group(function () {
 	Route::post('/logout', [LoginController::class, 'logout'])
 		->name('logout');
 
+	Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile.show');
 	Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+	Route::get('/profile/change-password', [ProfileController::class, 'showChangePassword'])->name('profile.show.password');
+	Route::put('/profile/change-password', [ProfileController::class, 'changePassword'])->name('profile.password');
 
 	// Dashboard
 	Route::view('/dashboard', 'dashboard')
@@ -70,5 +73,4 @@ Route::middleware('auth')->group(function () {
 	Route::view('/categories', 'categories')->name('categories');
 	Route::view('/reports', 'reports')->name('reports');
 	Route::view('/settings', 'settings')->name('settings');
-	Route::view('/user-profile', 'user-profile.profile')->name('user.profile');
 });

@@ -1,8 +1,9 @@
 <div class="border-t border-gray-200 p-4">
 	<div class="flex items-center gap-3 justify-center">
 
-		<a href="{{ route('user.profile') }}"
-			class="flex items-center gap-3 rounded-lg p-2 hover:bg-gray-100 transition">
+		<a href="{{ route('profile.show') }}"
+			class="flex items-center gap-3 rounded-lg p-2 hover:bg-gray-100 transition"
+			data-tippy-content="Profile Settings">
 
 			<div
 				class="h-10 w-10 rounded-full bg-linear-to-br bg-sky-600 flex items-center justify-center text-white font-semibold shrink-0">

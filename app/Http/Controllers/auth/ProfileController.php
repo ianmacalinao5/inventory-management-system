@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
+	public function showProfile()
+	{
+		return view('user.profile');
+	}
 	public function update(Request $request)
 	{
 
@@ -22,4 +26,11 @@ class ProfileController extends Controller
 		flash()->title('Profile Updated')->success('Your profile has been updated successfully.');
 		return redirect()->route('user.profile');
 	}
+
+	public function showChangePassword()
+	{
+		return view('user.change-password');
+	}
+
+	public function changePassword() {}
 }
