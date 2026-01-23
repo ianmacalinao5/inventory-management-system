@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\EmailRequest;
+use App\Http\Requests\Auth\ResetPasswordRequest;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
@@ -35,14 +36,8 @@ class ResetPasswordController extends Controller
 		return view('auth.reset-password', ['token' => $token, 'email' => $request->email]);
 	}
 
-	public function reset(Request $request)
+	public function reset(ResetPasswordRequest $request)
 	{
-		$request->validate([
-			'token' => 'required',
-			'email' => 'required|email',
-			'password' => 'required|min:8|confirmed',
-		]);
-
 		$status = Password::reset(
 			$request->only('email', 'password', 'password_confirmation', 'token'),
 			function ($user, $password) {

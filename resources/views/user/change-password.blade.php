@@ -12,23 +12,41 @@
 		@if(auth()->check())
 
 			<div class="bg-white rounded-lg border border-gray-200 shadow-sm">
-				<form action="/profile" class="p-6 space-y-6" method="POST">
+				<form x-data="{ loading: false }" @submit="loading = true" action="/profile/change-password"
+					class="p-6 space-y-6" method="POST">
 					@method('PUT')
 					@csrf
 
-					<div class="space-y-2">
-						<x-label for="email" title="Email" />
-						<x-input type="email" id="email" name="email" :value="auth()->user()->email" readonly disabled
-							class="text-gray-500 cursor-not-allowed" />
-						<p class="text-xs text-gray-500">Your email address cannot be changed.</p>
+					<div class="relative space-y-2" x-data="{ show: false }">
+						<x-label for="current_password" title="Current Password" />
+
+						<x-password-input id="current_password" name="current_password" placeholder="••••••••"
+							:error="$errors->has('current_password')" />
+
+						@error('current_password')
+							<p class="text-sm text-red-600">{{ $message }}</p>
+						@enderror
 					</div>
 
 					<div class="space-y-2">
-						<x-label for="name" title="Name" />
-						<x-input type="text" id="name" name="name" :value="auth()->user()->name" required />
+						<x-label for="new_password" title="New Password" />
+						<x-password-input id="new_password" name="new_password" placeholder="••••••••"
+							:error="$errors->has('new_password')" autocomplete="off" />
+						@error('new_password')
+							<p class=" text-sm text-red-600">{{ $message }}</p>
+						@enderror
 					</div>
 
-					<x-button type="submit" title="Save Changes" />
+					<div class="space-y-2">
+						<x-label for="new_password_confirmation" title="Confirm New Password" />
+						<x-input type="password" id="new_password_confirmation" name="new_password_confirmation"
+							placeholder="••••••••" :error="$errors->has('new_password_confirmation')" autocomplete="off" />
+						@error('new_password_confirmation')
+							<p class=" text-sm text-red-600">{{ $message }}</p>
+						@enderror
+					</div>
+
+					<x-button type="submit" title="Update Password" loadingTitle="Updating Password" />
 				</form>
 			</div>
 

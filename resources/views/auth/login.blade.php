@@ -12,7 +12,6 @@
 
 		<form method="POST" action="{{ route('login.authenticate') }}" class="space-y-6" x-data="{ loading: false }"
 			@submit="loading = true">
-
 			@csrf
 
 			<h2 class="text-2xl font-bold text-gray-800 text-center">
@@ -32,36 +31,18 @@
 			@endif
 
 			<div class="space-y-1">
-				<label for="email" class="text-sm font-medium text-gray-700">
-					Email
-				</label>
-				<input id="email" type="email" name="email" value="{{ old('email') }}" autofocus
-					placeholder="email@example.com" class="w-full px-4 py-2 border rounded-lg
-                           focus:outline-none focus:ring-1
-                           @error('email') border-red-500 focus:ring-red-500 @enderror">
+				<x-label for="email" title="Email" />
+				<x-input type="email" id="email" name="email" placeholder="email@example.com"
+					:error="$errors->has('email')" />
 				@error('email')
 					<p class="text-sm text-red-600">{{ $message }}</p>
 				@enderror
 			</div>
 
 			<div class="space-y-1">
-				<label for="password" class="text-sm font-medium text-gray-700">
-					Password
-				</label>
-
-				<div x-data="{ show: false }" class="relative">
-					<input id="password" :type="show ? 'text' : 'password'" name="password" placeholder="••••••••"
-						class="w-full px-4 py-2 border rounded-lg pr-10
-                   focus:outline-none focus:ring-1
-                   @error('password') border-red-500 focus:ring-red-500 @enderror">
-
-					<button type="button" @click="show = !show"
-						class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-						aria-label="Toggle password visibility">
-						<x-heroicon-o-eye class="w-5 h-5" x-show="!show" />
-						<x-heroicon-o-eye-slash class="w-5 h-5" x-show="show" />
-					</button>
-				</div>
+				<x-label for="password" title="Password" />
+				<x-password-input id="password" name="password" placeholder="••••••••" :error="$errors->has('password')"
+					autocomplete="off" />
 
 				@error('password')
 					<p class="text-sm text-red-600">{{ $message }}</p>
@@ -81,11 +62,7 @@
 				</a>
 			</div>
 
-			<button type="submit" :disabled="loading"
-				class="w-full bg-sky-600 text-white py-2 rounded-lg hover:bg-sky-700 transition font-semibold disabled:opacity-60 disabled:cursor-not-allowed">
-				<span x-show="!loading">Sign in</span>
-				<span x-show="loading">Signing in…</span>
-			</button>
+			<x-button type="submit" title="Sign in" loadingTitle="Signing in…" class="w-full" />
 
 		</form>
 	</div>

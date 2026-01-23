@@ -12,8 +12,8 @@
 
 
 
-		<form action="{{ route('password.email') }}" method="POST" x-data="{ resetLoading: false }"
-			@submit="resetLoading = true" class="space-y-6">
+		<form action="{{ route('password.email') }}" method="POST" x-data="{ loading: false }" @submit="loading = true"
+			class="space-y-6">
 			@csrf
 
 			<h2 class="text-xl mb-5">Reset Password</h2>
@@ -25,26 +25,14 @@
 			@endif
 
 			<div class="space-y-1 mb-4">
-				<label for="email" class="text-sm font-medium text-gray-700">
-					Email
-				</label>
-
-				<input id="email" type="email" name="email" value="{{ old('email') }}" autofocus
-					placeholder="email@example.com" class="w-full px-4 py-2 border rounded-lg
-                        focus:outline-none focus:ring-1
-                        @error('email') border-red-500 focus:ring-red-500 @enderror">
-
-				@error('email')
-					<p class="text-sm text-red-600">{{ $message }}</p>
+				<x-label for="email" title="Email" />
+				<x-input type="email" name="email" id="email" placeholder="email@example.com"
+					:error="$errors->has('email')" />
+				@error('email') <p class="text-sm text-red-600">{{ $message }}</p>
 				@enderror
 			</div>
 
-			<button type="submit" :disabled="resetLoading" class="w-full bg-sky-600 text-white py-2 rounded-lg
-                       hover:bg-sky-700 transition font-semibold
-                       disabled:opacity-60 disabled:cursor-not-allowed">
-				<span x-show="!resetLoading">Send Link</span>
-				<span x-show="resetLoading">Sending Link…</span>
-			</button>
+			<x-button type="submit" title="Send Link" loadingTitle="Sending Link…" class="w-full" />
 
 			<div class="text-sm text-center">
 				<a href="{{ route('login') }}" class="text-sky-600 hover:underline">

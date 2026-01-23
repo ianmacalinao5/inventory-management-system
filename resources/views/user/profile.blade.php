@@ -13,7 +13,8 @@
 		@if(auth()->check())
 
 			<div class="bg-white rounded-lg border border-gray-200 shadow-sm">
-				<form action="/profile" class="p-6 space-y-6" method="POST">
+				<form x-data="{ loading: false }" @submit="loading = true" action="/profile" class="p-6 space-y-6"
+					method="POST">
 					@method('PUT')
 					@csrf
 
@@ -29,7 +30,7 @@
 						<x-input type="text" id="name" name="name" :value="auth()->user()->name" required />
 					</div>
 
-					<x-button type="submit" title="Save Changes" />
+					<x-button type="submit" title="Save Changes" loadingTitle="Saving Changes" />
 				</form>
 			</div>
 

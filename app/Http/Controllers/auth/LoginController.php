@@ -25,6 +25,7 @@ class LoginController extends Controller
 
 		$request->session()->regenerate();
 
+		flash()->success('You have logged in successfully.');
 		return redirect()->intended(route('dashboard'));
 	}
 
@@ -35,6 +36,7 @@ class LoginController extends Controller
 		$request->session()->invalidate();
 		$request->session()->regenerateToken();
 
+		flash()->success('You have been logged out successfully.');
 		return redirect()->route('login');
 	}
 }
