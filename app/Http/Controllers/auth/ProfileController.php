@@ -23,8 +23,8 @@ class ProfileController extends Controller
 		$user->name = $validated['name'];
 		$user->save();
 
-		flash()->title('Profile Updated')->success('Your profile has been updated successfully.');
-		return redirect()->route('user.profile');
+		flash()->success('Your profile has been updated successfully.');
+		return redirect()->route('profile.show');
 	}
 
 	public function showChangePassword()

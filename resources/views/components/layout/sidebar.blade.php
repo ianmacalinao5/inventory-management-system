@@ -22,29 +22,34 @@
 			<!-- Logo Section -->
 			<x-logo />
 
+			@php
+				$navClass = 'ml-3 transition-all duration-300';
+				$navIconSize = 'w-5 h-5';
+			@endphp
+
 			<!-- Navigation Menu -->
 			<nav class="flex-1 overflow-y-auto px-3 py-4">
 				<div class="space-y-1">
 					<x-nav-link route="dashboard" href="{{ route('dashboard') }}" data-tippy-content="Dashboard">
-						<x-heroicon-o-home class="w-5 h-5" />
-						<span x-show="sidebarOpen" class="ml-3 transition-all duration-300">Dashboard</span>
+						<x-heroicon-o-home class="{{ $navIconSize }}" />
+						<span x-show="sidebarOpen" class="{{ $navClass }}">Dashboard</span>
 					</x-nav-link>
 
 					<x-nav-link route="products" href="{{ route('products.index') }}" data-tippy-content="Products">
-						<x-heroicon-o-cube class="w-5 h-5" />
-						<span x-show="sidebarOpen" class="ml-3 transition-all duration-300">Products</span>
+						<x-heroicon-o-cube class="{{ $navIconSize }}" />
+						<span x-show="sidebarOpen" class="{{ $navClass }}">Products</span>
 						<span x-show="sidebarOpen"
 							class="ml-auto rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-sky-700">248</span>
 					</x-nav-link>
 
 					<x-nav-link route="inventory" href="{{ route('inventory') }}" data-tippy-content="Inventory">
-						<x-heroicon-o-archive-box class="w-5 h-5" />
-						<span x-show="sidebarOpen" class="ml-3 transition-all duration-300">Inventory</span>
+						<x-heroicon-o-archive-box class="{{ $navIconSize }}" />
+						<span x-show="sidebarOpen" class="{{ $navClass }}">Inventory</span>
 					</x-nav-link>
 
 					<x-nav-link route="orders" href="{{ route('orders') }}" data-tippy-content="Orders">
-						<x-heroicon-o-shopping-cart class="w-5 h-5" />
-						<span x-show="sidebarOpen" class="ml-3 transition-all duration-300">Orders</span>
+						<x-heroicon-o-shopping-cart class="{{ $navIconSize }}" />
+						<span x-show="sidebarOpen" class="{{ $navClass }}">Orders</span>
 						<span x-show="sidebarOpen"
 							class="ml-auto rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-700">12</span>
 					</x-nav-link>
@@ -52,25 +57,25 @@
 					<div class="my-4 border-t border-gray-200"></div>
 
 					<x-nav-link route="suppliers" href="{{ route('suppliers') }}" data-tippy-content="Suppliers">
-						<x-heroicon-o-users class="w-5 h-5" />
-						<span x-show="sidebarOpen" class="ml-3 transition-all duration-300">Suppliers</span>
+						<x-heroicon-o-users class="{{ $navIconSize }}" />
+						<span x-show="sidebarOpen" class="{{ $navClass }}">Suppliers</span>
 					</x-nav-link>
 
 					<x-nav-link route="categories" href="{{ route('categories') }}" data-tippy-content="Categories">
-						<x-heroicon-o-tag class="w-5 h-5" />
-						<span x-show="sidebarOpen" class="ml-3 transition-all duration-300">Categories</span>
+						<x-heroicon-o-tag class="{{ $navIconSize }}" />
+						<span x-show="sidebarOpen" class="{{ $navClass }}">Categories</span>
 					</x-nav-link>
 
 					<x-nav-link route="reports" href="{{ route('reports') }}" data-tippy-content="Reports">
-						<x-heroicon-o-chart-bar class="w-5 h-5" />
-						<span x-show="sidebarOpen" class="ml-3 transition-all duration-300">Reports</span>
+						<x-heroicon-o-chart-bar class="{{ $navIconSize }}" />
+						<span x-show="sidebarOpen" class="{{ $navClass }}">Reports</span>
 					</x-nav-link>
 
 					<div class="my-4 border-t border-gray-200"></div>
 
 					<x-nav-link route="settings" href="{{ route('settings') }}" data-tippy-content="Settings">
-						<x-heroicon-o-cog-6-tooth class="w-5 h-5" />
-						<span x-show="sidebarOpen" class="ml-3 transition-all duration-300">Settings</span>
+						<x-heroicon-o-cog-6-tooth class="{{ $navIconSize }}" />
+						<span x-show="sidebarOpen" class="{{ $navClass }}">Settings</span>
 					</x-nav-link>
 				</div>
 			</nav>

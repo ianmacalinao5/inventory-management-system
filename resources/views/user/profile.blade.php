@@ -8,7 +8,7 @@
 			<p class="mt-2 text-sm text-gray-600">Manage your account information and preferences.</p>
 		</div>
 
-		<x-profile.navbar-profile class="mb-5" />
+		<x-profile.navbar-profile class="mb-3" />
 
 		@if(auth()->check())
 
