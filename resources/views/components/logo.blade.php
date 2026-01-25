@@ -5,6 +5,6 @@
 	</div>
 	<div x-show="sidebarOpen" class="transition-all duration-300">
 		<h1 class="text-lg font-bold text-gray-900">Inventory</h1>
-		<p class="text-xs text-gray-500">Management</p>
+		<p class="text-xs text-gray-500">Management System</p>
 	</div>
 </div>

@@ -1,3 +1,4 @@
+@section('title', 'Settings')
 <x-layout.sidebar>
-	<h1 class="text-3xl">Settings</h1>
+	<h1 class="text-2xl font-semibold">Settings</h1>
 </x-layout.sidebar>

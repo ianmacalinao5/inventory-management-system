@@ -7,11 +7,6 @@
 				<x-heroicon-o-bars-3 class="h-6 w-6" x-show="sidebarOpen" />
 			</button>
 
-			<!-- Page Title / Breadcrumbs -->
-			<div>
-				<h2 class="text-xl font-semibold text-gray-900"> @yield('page-title', 'Dashboard')</h2>
-			</div>
-
 		</div>
 
 		<!-- Header Actions -->
