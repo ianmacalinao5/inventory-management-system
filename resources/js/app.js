@@ -2,44 +2,48 @@ import "./bootstrap";
 import tippy from "tippy.js";
 import "tippy.js/dist/tippy.css";
 
-document.addEventListener("alpine:initialized", () => {
-    function updateTooltips(sidebarOpen) {
-        // Destroy existing tooltip instances
-        document.querySelectorAll("[data-tippy-content]").forEach((el) => {
-            if (el._tippy) {
-                el._tippy.destroy();
-            }
-        });
+function updateTooltips() {
+    const sidebarOpen = JSON.parse(localStorage.getItem("sidebarOpen")) ?? true;
 
-        // Only create tooltips when sidebar is collapsed
-        if (!sidebarOpen) {
+    // Destroy ALL existing tooltips first
+    document.querySelectorAll("[data-tippy-content]").forEach((el) => {
+        if (el._tippy) {
+            el._tippy.destroy();
+        }
+    });
+
+    // Only create tooltips when sidebar is COLLAPSED
+    if (!sidebarOpen) {
+        setTimeout(() => {
             tippy("[data-tippy-content]", {
+                content: (reference) =>
+                    reference.getAttribute("data-tippy-content"),
                 placement: "right",
+                appendTo: document.body,
                 arrow: false,
                 theme: "light-border",
                 offset: [0, 10],
                 animation: "fade",
+                delay: [200, 0],
+                trigger: "mouseenter focus",
             });
-        }
+        }, 350);
     }
+}
 
-    // Watch for sidebar toggle changes
-    const observer = new MutationObserver(() => {
-        const sidebarElement = document.querySelector("aside");
-        const sidebarOpen = sidebarElement?.classList.contains("w-64");
-        updateTooltips(sidebarOpen);
-    });
+// Initialize tooltips when Alpine is ready
+document.addEventListener("alpine:initialized", () => {
+    updateTooltips();
+});
 
-    // Observe sidebar class changes
-    const sidebarElement = document.querySelector("aside");
-    if (sidebarElement) {
-        observer.observe(sidebarElement, {
-            attributes: true,
-            attributeFilter: ["class"],
-        });
+// Listen for custom sidebar toggle event
+window.addEventListener("sidebar-toggled", () => {
+    updateTooltips();
+});
 
-        // Initial setup
-        const sidebarOpen = sidebarElement.classList.contains("w-64");
-        updateTooltips(sidebarOpen);
+// Also listen for storage changes (multiple tabs)
+window.addEventListener("storage", (e) => {
+    if (e.key === "sidebarOpen") {
+        updateTooltips();
     }
 });

@@ -15,7 +15,7 @@
 
 	<div class="flex h-full">
 		<!-- Sidebar -->
-		<aside x-cloak :class="sidebarOpen ? 'w-64' : 'w-21'"
+		<aside x-cloak :class="sidebarOpen ? 'w-64' : 'w-20'"
 			class="fixed inset-y-0 left-0 z-50 flex flex-col border-r border-gray-200 bg-white shadow-lg transition-all duration-300">
 
 			<!-- Logo Section -->
@@ -28,8 +28,8 @@
 
 			<!-- Navigation Menu -->
 			<nav class="flex-1 overflow-y-auto px-3 py-4">
-				<div class="space-y-1">
-					<x-nav-link route="dashboard" href="{{ route('dashboard') }}" data-tippy-content="Dashboard">
+				<div class="space-y-1" :class="sidebarOpen ? '' : 'flex flex-col justify-center items-center' ">
+					<x-nav-link route="dashboard" href="{{ route('dashboard.index') }}" data-tippy-content="Dashboard">
 						<x-heroicon-o-home class="{{ $navIconSize }}" />
 						<span x-show="sidebarOpen" class="{{ $navClass }}">Dashboard</span>
 					</x-nav-link>
@@ -41,38 +41,41 @@
 							class="ml-auto rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-sky-700">248</span>
 					</x-nav-link>
 
-					<x-nav-link route="inventory" href="{{ route('inventory') }}" data-tippy-content="Inventory">
+					<x-nav-link route="inventory" href="{{ route('inventory.index') }}" data-tippy-content="Inventory">
 						<x-heroicon-o-archive-box class="{{ $navIconSize }}" />
 						<span x-show="sidebarOpen" class="{{ $navClass }}">Inventory</span>
 					</x-nav-link>
 
-					<x-nav-link route="orders" href="{{ route('orders') }}" data-tippy-content="Orders">
+					<x-nav-link route="orders" href="{{ route('orders.index') }}" data-tippy-content="Orders">
 						<x-heroicon-o-shopping-cart class="{{ $navIconSize }}" />
 						<span x-show="sidebarOpen" class="{{ $navClass }}">Orders</span>
 						<span x-show="sidebarOpen"
 							class="ml-auto rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-700">12</span>
 					</x-nav-link>
 
-					<div class="my-4 border-t border-gray-200"></div>
+					<div :class="sidebarOpen ? 'my-4 border-t border-gray-200' : 'my-4 w-12 border-t border-gray-200'">
+					</div>
 
-					<x-nav-link route="suppliers" href="{{ route('suppliers') }}" data-tippy-content="Suppliers">
+					<x-nav-link route="suppliers" href="{{ route('suppliers.index') }}" data-tippy-content="Suppliers">
 						<x-heroicon-o-users class="{{ $navIconSize }}" />
 						<span x-show="sidebarOpen" class="{{ $navClass }}">Suppliers</span>
 					</x-nav-link>
 
-					<x-nav-link route="categories" href="{{ route('categories') }}" data-tippy-content="Categories">
+					<x-nav-link route="categories" href="{{ route('categories.index') }}"
+						data-tippy-content="Categories">
 						<x-heroicon-o-tag class="{{ $navIconSize }}" />
 						<span x-show="sidebarOpen" class="{{ $navClass }}">Categories</span>
 					</x-nav-link>
 
-					<x-nav-link route="reports" href="{{ route('reports') }}" data-tippy-content="Reports">
+					<x-nav-link route="reports" href="{{ route('reports.index') }}" data-tippy-content="Reports">
 						<x-heroicon-o-chart-bar class="{{ $navIconSize }}" />
 						<span x-show="sidebarOpen" class="{{ $navClass }}">Reports</span>
 					</x-nav-link>
 
-					<div class="my-4 border-t border-gray-200"></div>
+					<div :class="sidebarOpen ? 'my-4 border-t border-gray-200' : 'my-4 w-12 border-t border-gray-200'">
+					</div>
 
-					<x-nav-link route="settings" href="{{ route('settings') }}" data-tippy-content="Settings">
+					<x-nav-link route="settings" href="{{ route('settings.index') }}" data-tippy-content="Settings">
 						<x-heroicon-o-cog-6-tooth class="{{ $navIconSize }}" />
 						<span x-show="sidebarOpen" class="{{ $navClass }}">Settings</span>
 					</x-nav-link>

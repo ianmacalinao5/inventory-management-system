@@ -2,7 +2,9 @@
 	<div class="flex h-16 items-center justify-between px-6">
 		<div class="flex items-center gap-5">
 			<!-- Sidebar Toggle Button -->
-			<button @click="sidebarOpen = !sidebarOpen" class="p-2 rounded-md hover:bg-gray-200 cursor-pointer">
+			<button
+				@click="sidebarOpen = !sidebarOpen; $nextTick(() => { window.dispatchEvent(new Event('sidebar-toggled')); })"
+				class="p-2 rounded-md hover:bg-gray-200 cursor-pointer">
 				<x-heroicon-o-x-mark class="h-6 w-6" x-show="!sidebarOpen" />
 				<x-heroicon-o-bars-3 class="h-6 w-6" x-show="sidebarOpen" />
 			</button>
