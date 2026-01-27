@@ -5,7 +5,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Inventory\ProductController;
+use App\Http\Controllers\Settings\SettingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,5 +73,9 @@ Route::middleware('auth')->group(function () {
 	Route::view('/suppliers', 'suppliers')->name('suppliers');
 	Route::view('/categories', 'categories')->name('categories');
 	Route::view('/reports', 'reports')->name('reports');
-	Route::view('/settings', 'settings')->name('settings');
+
+	// Settings
+	Route::controller(SettingsController::class)->group(function () {
+		Route::get('/settings', 'index')->name('settings.index');
+	});
 });
