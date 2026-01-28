@@ -26,7 +26,7 @@ class LoginController extends Controller
 		$request->session()->regenerate();
 
 		flash()->success('You have logged in successfully.');
-		return redirect()->intended(route('dashboard'));
+		return redirect()->intended(route('dashboard.index'));
 	}
 
 	public function logout(Request $request)

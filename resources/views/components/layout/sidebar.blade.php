@@ -1,5 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="en" class="h-full" x-data="{ theme: '{{ auth()->check() ? auth()->user()->theme_mode : 'system' }}' }"
+	x-init="
+        if (theme === 'system') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        $watch('theme', value => {
+          if (value === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        });
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      " :class="theme === 'dark' ? 'dark' : ''">
 
 <head>
 	<meta charset="UTF-8">
@@ -8,15 +23,17 @@
 	@vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body x-data="{
-        sidebarOpen: JSON.parse(localStorage.getItem('sidebarOpen')) ?? true
-    }" x-init="$watch('sidebarOpen', value => localStorage.setItem('sidebarOpen', JSON.stringify(value)))"
-	class="h-full bg-gray-100 text-gray-900 antialiased">
+<body x-data="{ sidebarOpen: JSON.parse(localStorage.getItem('sidebarOpen')) ?? true }"
+	x-init="$watch('sidebarOpen', value => localStorage.setItem('sidebarOpen', JSON.stringify(value)))"
+	class="h-full bg-gray-100 dark:bg-slate-900 text-gray-900 dark:text-gray-100 antialiased">
 
 	<div class="flex h-full">
 		<!-- Sidebar -->
-		<aside x-cloak :class="sidebarOpen ? 'w-64' : 'w-20'"
-			class="fixed inset-y-0 left-0 z-50 flex flex-col border-r border-gray-200 bg-white shadow-lg transition-all duration-300">
+		<aside x-cloak :class="sidebarOpen ? 'w-64' : 'w-20'" class="fixed inset-y-0 left-0 z-50
+           flex flex-col
+           border-r border-gray-200 dark:border-gray-700
+           bg-white dark:bg-gray-900
+           shadow-lg transition-all duration-300">
 
 			<!-- Logo Section -->
 			<x-logo />
@@ -37,8 +54,12 @@
 					<x-nav-link route="products" href="{{ route('products.index') }}" data-tippy-content="Products">
 						<x-heroicon-o-cube class="{{ $navIconSize }}" />
 						<span x-show="sidebarOpen" class="{{ $navClass }}">Products</span>
-						<span x-show="sidebarOpen"
-							class="ml-auto rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-sky-700">248</span>
+						<span x-show="sidebarOpen" class="ml-auto rounded-full
+							bg-blue-100 px-2 py-0.5 text-xs font-medium text-sky-700
+							dark:bg-sky-500/10 dark:text-sky-400">
+							248
+						</span>
+
 					</x-nav-link>
 
 					<x-nav-link route="inventory" href="{{ route('inventory.index') }}" data-tippy-content="Inventory">
@@ -50,10 +71,12 @@
 						<x-heroicon-o-shopping-cart class="{{ $navIconSize }}" />
 						<span x-show="sidebarOpen" class="{{ $navClass }}">Orders</span>
 						<span x-show="sidebarOpen"
-							class="ml-auto rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-700">12</span>
+							class="ml-auto rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-700 dark:bg-red-500/10 dark:text-red-400">12</span>
 					</x-nav-link>
 
-					<div :class="sidebarOpen ? 'my-4 border-t border-gray-200' : 'my-4 w-12 border-t border-gray-200'">
+					<div :class="sidebarOpen
+						? 'my-4 border-t border-gray-200 dark:border-gray-700'
+						: 'my-4 w-12 border-t border-gray-200 dark:border-gray-700'">
 					</div>
 
 					<x-nav-link route="suppliers" href="{{ route('suppliers.index') }}" data-tippy-content="Suppliers">
@@ -72,7 +95,9 @@
 						<span x-show="sidebarOpen" class="{{ $navClass }}">Reports</span>
 					</x-nav-link>
 
-					<div :class="sidebarOpen ? 'my-4 border-t border-gray-200' : 'my-4 w-12 border-t border-gray-200'">
+					<div :class="sidebarOpen
+						? 'my-4 border-t border-gray-200 dark:border-gray-700'
+						: 'my-4 w-12 border-t border-gray-200 dark:border-gray-700'">
 					</div>
 
 					<x-nav-link route="settings" href="{{ route('settings.index') }}" data-tippy-content="Settings">

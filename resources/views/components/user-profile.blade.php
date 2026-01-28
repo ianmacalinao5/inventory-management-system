@@ -1,8 +1,8 @@
-<div class="border-t border-gray-200 p-4">
+<div class="border-t border-gray-200 dark:border-gray-700 p-4">
 	<div class="flex items-center gap-3 justify-center">
 
 		<a href="{{ route('profile.show') }}"
-			class="flex items-center gap-3 rounded-lg p-2 hover:bg-gray-100 transition"
+			class="flex items-center gap-3 rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-sky-500/10 dark:hover:text-gray-100 transition"
 			data-tippy-content="Profile Settings">
 
 			<div
@@ -14,10 +14,10 @@
 
 			<div x-show="sidebarOpen" x-transition class="min-w-0">
 				@if(auth()->check())
-					<p class="text-sm font-medium text-gray-900 truncate">
+					<p class="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">
 						{{ auth()->user()->name }}
 					</p>
-					<p class="text-xs text-gray-500 truncate">
+					<p class="text-xs text-gray-400 truncate">
 						{{ auth()->user()->email }}
 					</p>
 				@endif
@@ -27,7 +27,7 @@
 		<form method="POST" action="{{ route('logout') }}" class="shrink-0" x-show="sidebarOpen">
 			@csrf
 			<button type="submit"
-				class="rounded-lg p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition cursor-pointer"
+				class="rounded-lg p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-sky-500/10 dark:hover:text-gray-100 transition cursor-pointer"
 				title="Logout">
 				<x-heroicon-o-arrow-right-on-rectangle class="w-5 h-5" />
 			</button>

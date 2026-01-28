@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AppearanceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\Auth\LoginController;
@@ -20,3 +21,8 @@ Route::controller(ProfileController::class)->group(function () {
 });
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::controller(AppearanceController::class)->group(function () {
+	Route::get('/appearance', 'index')->name('profile.appearance.index');
+	Route::put('/appearance', 'update')->name('profile.appearance.update');
+});

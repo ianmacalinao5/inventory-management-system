@@ -1,5 +1,4 @@
 @section('title', 'Change Password')
-@section('page-title', 'Profile')
 
 <x-layout.sidebar>
 	<div class="max-w-2xl">
