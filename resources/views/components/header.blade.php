@@ -13,7 +13,7 @@
 				class="rounded-md p-2
                        text-gray-700 hover:bg-gray-200
                        dark:text-gray-400 dark:hover:bg-sky-500/10
-                       transition">
+                       transition cursor-pointer">
 				<x-heroicon-o-x-mark class="h-6 w-6 text-current" x-show="!sidebarOpen" />
 				<x-heroicon-o-bars-3 class="h-6 w-6 text-current" x-show="sidebarOpen" />
 			</button>

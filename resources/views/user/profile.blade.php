@@ -4,15 +4,16 @@
 <x-layout.sidebar>
 	<div class="max-w-2xl">
 		<div class="mb-5">
-			<h2 class="text-2xl font-semibold text-gray-900">Profile Settings</h2>
-			<p class="mt-2 text-sm text-gray-600">Manage your account information and preferences.</p>
+			<h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100">Profile Settings</h2>
+			<p class="mt-2 text-sm text-gray-600 dark:text-gray-200">Manage your account information and preferences.
+			</p>
 		</div>
 
 		<x-profile.navbar-profile class="mb-3" />
 
 		@if(auth()->check())
 
-			<div class="bg-white rounded-lg border border-gray-200 shadow-sm">
+			<div class="bg-white rounded-lg border border-gray-200 dark:border-gray-700 dark:bg-gray-900 shadow-sm">
 				<form x-data="{ loading: false }" @submit="loading = true" action="/profile" class="p-6 space-y-6"
 					method="POST">
 					@method('PUT')

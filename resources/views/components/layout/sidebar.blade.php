@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full" x-data="{ theme: '{{ auth()->check() ? auth()->user()->theme_mode : 'system' }}' }"
-	x-init="
+<html lang="en" class="h-full scroll-smooth"
+	x-data="{ theme: '{{ auth()->check() ? auth()->user()->theme_mode : 'system' }}' }" x-init="
         if (theme === 'system') {
           theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         }
@@ -33,7 +33,7 @@
            flex flex-col
            border-r border-gray-200 dark:border-gray-700
            bg-white dark:bg-gray-900
-           shadow-lg transition-all duration-300">
+           shadow-lg transition-all duration-300 sidebar-scroll">
 
 			<!-- Logo Section -->
 			<x-logo />
@@ -114,7 +114,7 @@
 		<div x-cloak :class="sidebarOpen ? 'pl-64' : 'pl-20'" class="flex flex-1 flex-col transition-all duration-300">
 			<x-header />
 
-			<main class="flex-1 overflow-y-auto p-8">
+			<main class="flex-1 overflow-y-auto p-8 sidebar-scroll">
 				{{ $slot }}
 			</main>
 

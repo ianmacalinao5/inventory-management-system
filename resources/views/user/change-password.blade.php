@@ -3,14 +3,15 @@
 <x-layout.sidebar>
 	<div class="max-w-2xl">
 		<div class="mb-5">
-			<h2 class="text-2xl font-semibold text-gray-900">Profile Settings</h2>
-			<p class="mt-2 text-sm text-gray-600">Manage your account information and preferences.</p>
+			<h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100">Profile Settings</h2>
+			<p class="mt-2 text-sm text-gray-600 dark:text-gray-200">Manage your account information and preferences.
+			</p>
 		</div>
 		<x-profile.navbar-profile class="mb-3" />
 
 		@if(auth()->check())
 
-			<div class="bg-white rounded-lg border border-gray-200 shadow-sm">
+			<div class="bg-white rounded-lg border border-gray-200 shadow-sm dark:border-gray-700 dark:bg-gray-900">
 				<form x-data="{ loading: false }" @submit="loading = true" action="/profile/change-password"
 					class="p-6 space-y-6" method="POST">
 					@method('PUT')
@@ -23,7 +24,7 @@
 							:error="$errors->has('current_password')" />
 
 						@error('current_password')
-							<p class="text-sm text-red-600">{{ $message }}</p>
+							<p class="text-sm text-red-600 dark:text-red-300">{{ $message }}</p>
 						@enderror
 					</div>
 
@@ -32,16 +33,16 @@
 						<x-password-input id="new_password" name="new_password" placeholder="••••••••"
 							:error="$errors->has('new_password')" autocomplete="off" />
 						@error('new_password')
-							<p class=" text-sm text-red-600">{{ $message }}</p>
+							<p class=" text-sm text-red-600 dark:text-red-300">{{ $message }}</p>
 						@enderror
 					</div>
 
 					<div class="space-y-2">
 						<x-label for="new_password_confirmation" title="Confirm New Password" />
-						<x-input type="password" id="new_password_confirmation" name="new_password_confirmation"
-							placeholder="••••••••" :error="$errors->has('new_password_confirmation')" autocomplete="off" />
+						<x-input id="new_password_confirmation" name="new_password_confirmation" placeholder="••••••••"
+							:error="$errors->has('new_password_confirmation')" autocomplete="off" />
 						@error('new_password_confirmation')
-							<p class=" text-sm text-red-600">{{ $message }}</p>
+							<p class=" text-sm text-red-600 dark:text-red-300">{{ $message }}</p>
 						@enderror
 					</div>
 
