@@ -1,13 +1,6 @@
 import "./bootstrap";
 import tippy from "tippy.js";
 import "tippy.js/dist/tippy.css";
-import Chart from "chart.js/auto";
-
-window.Chart = Chart;
-
-import { renderOrdersChart } from "./charts/orderChart";
-
-window.renderOrdersChart = renderOrdersChart;
 
 function updateTooltips() {
     const sidebarOpen = JSON.parse(localStorage.getItem("sidebarOpen")) ?? true;
