@@ -13,8 +13,8 @@
 		@if(auth()->check())
 
 			<div class="bg-white dark:bg-gray-900
-										rounded-lg border border-gray-200 dark:border-gray-700
-										shadow-sm">
+												rounded-lg border border-gray-200 dark:border-gray-700
+												shadow-sm">
 
 				<form x-data="{ loading: false, selectedTheme: '{{ auth()->user()->theme_mode }}' }"
 					@submit="loading = true" method="POST" action="{{ route('profile.appearance.update') }}"

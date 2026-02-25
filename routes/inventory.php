@@ -12,6 +12,7 @@ Route::controller(InventoryOverviewController::class)->group(function () {
 
 Route::controller(ProductController::class)->group(function () {
 	Route::get('/products', 'index')->name('products.index');
+	Route::get('/products/create', 'create')->name('products.create');
 });
 
 Route::controller(CategoryController::class)->group(function () {
